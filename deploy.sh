@@ -1,5 +1,7 @@
 #!/bin/bash
 
+ip=$(hostname -I | cut -f1 -d' ')
+
 bashrc="/root/.bashrc"
 
 sshdir="/etc/ssh"
@@ -68,4 +70,19 @@ systemctl restart sshd.service
 chpasswd <<<"root:$pass1"
 
 echo "Deploy finished"
+
+echo "--------------SSH Connection details--------------"
+
+echo ""
+echo ""
+
+echo "shh root@$ip"
+echo ""
+echo "$pass1"
+
+echo ""
+echo ""
+
+echo "--------------------------------------------------"
+
 echo "Bye."
