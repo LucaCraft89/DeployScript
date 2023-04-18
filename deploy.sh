@@ -46,7 +46,7 @@ fi
 
 cd /root/
 
-apt-get install neofetch
+apt-get install neofetch -y
 
 neofetch
 
@@ -76,7 +76,7 @@ echo "--------------SSH Connection details--------------"
 echo ""
 echo ""
 
-echo "shh root@$ip"
+echo "ssh root@$ip"
 echo ""
 echo "$pass1"
 
