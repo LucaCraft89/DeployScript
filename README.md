@@ -1,6 +1,11 @@
 # DeployScript
-My own Deploy srcipt
+My own Deploy srcipt for quicly detting up a Ubuntu Server installation
 
+## What this does
+1. Enables ssh ad root
+2. Installs NeoFetch
+3. Changes the root password
+4. Makes the root terminal prittier by adding NeoFetch every time the shell is loaded and changoing the colors (.baschrc)
 
 ## Installation
 1. Acquire ROOT Shell
