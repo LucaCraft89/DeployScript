@@ -2,12 +2,24 @@
 My own Deploy srcipt for quicly detting up a Ubuntu Server installation
 
 ## What this does
-1. Enables ssh ad root
-2. Installs NeoFetch
-3. Changes the root password
-4. Makes the root terminal prittier by adding NeoFetch every time the shell is loaded and changoing the colors (.baschrc)
+1. Aks to change hostname
+2. Enables ssh as root (asks to install ssh if not present)
+3. Installs NeoFetch
+4. add NeoFetch to .bashrc
+5. Changes the root password
+6. Makes the root terminal prittier by adding NeoFetch every time the shell is loaded and changoing the colors (.baschrc)
+7. Asks if you want to install extra components
+    1. Docker (with docker-compose)
+    2. NodeJS
+    3. Apache2
+    5. PHP
+    4. MariaDB (MySQL)
+    5. MongoDB
+    6. Python
+    7. Java
+    8. C/C++ (GCC/G++/Clang)
 
-## Installation
+## Usage
 1. Acquire ROOT Shell
 ```
 sudo su 
