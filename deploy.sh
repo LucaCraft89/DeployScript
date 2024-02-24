@@ -16,9 +16,8 @@ componentInstall()
    if [[ $components = "9" ]]
    then
       components="1,2,3,4,5,6,7,8"
-   else
-      IFS=',' read -r -a array <<< "$components"
    fi
+      IFS=',' read -r -a array <<< "$components"
    for element in "${array[@]}"
    do
       if [[ $element = "1" ]]
