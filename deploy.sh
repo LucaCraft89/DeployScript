@@ -5,7 +5,6 @@ componentInstall()
    echo "1. Docker (with docker-compose)"
    echo "2. NodeJS"
    echo "3. Apache2"
-   echo "5. PHP"
    echo "4. MariaDB (MySQL)"
    echo "5. MongoDB"
    echo "6. Python"
@@ -17,17 +16,19 @@ componentInstall()
    then
       components="1,2,3,4,5,6,7,8"
    fi
-      IFS=',' read -r -a array <<< "$components"
+   IFS=',' read -r -a array <<< "$components"
    for element in "${array[@]}"
    do
       if [[ $element = "1" ]]
       then
+         clear
          echo "Installing Docker"
          apt-get install docker.io -y
          apt-get install docker-compose -y
       fi
       if [[ $element = "2" ]]
       then
+         clear
          echo "Installing NodeJS"
          echo "Select Version"
          echo "1. 12.x"
@@ -58,21 +59,25 @@ componentInstall()
       fi
       if [[ $element = "3" ]]
       then
+         clear
          echo "Installing Apache2"
          apt-get install apache2 -y
       fi
       if [[ $element = "4" ]]
       then
+         clear
          echo "Installing MariaDB"
          apt-get install mariadb-server -y
       fi
       if [[ $element = "5" ]]
       then
+         clear
          echo "Installing MongoDB"
          apt-get install mongodb -y
       fi
       if [[ $element = "6" ]]
       then
+         clear
          echo "Installing Python"
          echo "Select Version"
          echo "1. 3.8"
@@ -99,6 +104,7 @@ componentInstall()
       fi
       if [[ $element = "7" ]]
       then
+         clear
          echo "Installing Java"
          echo "Select Version"
          echo "1. 8"
@@ -125,6 +131,7 @@ componentInstall()
       fi
       if [[ $element = "8" ]]
       then
+         clear
          echo "Installing C/C++"
          apt-get install gcc -y
          apt-get install g++ -y
@@ -132,9 +139,17 @@ componentInstall()
          apt-get install build-essential -y
       fi
    done
+   clear
+   echo "Reboot?"
+   read -p "Y/N: " reboot
+   if [[ $reboot = "Y" ]]
+   then
+      reboot
+   fi
+   clear
    echo "Exit? (Y/N)"
-   read -p "Y/N: " exit
-   if [[ $exit = "Y" ]]
+   read -p "Y/N: " exit_choice
+   if [[ $exit_choice = "Y" ]]
    then
       echo "Bye."
       exit 1
@@ -148,6 +163,7 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+clear
 echo "Skip to component installation (Skip Deploy)?"
 
 read -p "Y/N: " skip
@@ -163,7 +179,7 @@ fi
 echo "Deploying..."
 
 sleep 0.5
-
+clear
 echo "Configuration Started"
 
 read -p "MachineNumber (leave blank for current hostname)" hostnumber
@@ -185,6 +201,8 @@ else
    hostnamectl set-hostname $hostname
 
    echo "Hostname changed to: " $hostname
+
+   sleep 0.5
 fi
 
 ip=$(hostname -I | cut -f1 -d' ')
@@ -195,16 +213,19 @@ sshdir="/etc/ssh"
 
 sshconf="/etc/ssh/sshd_config"
 
-echo "Enter New root password (leave blank for default: 123)"
+clear
+
+echo "Enter New root password (leave blank for current password)"
 
 read -p "Password: " pass1
 
 if [[ $pass1 = "" ]]
 then
-   pass1="123"
+   echo "Leaving password unchanged (You may not be able to access SSH without changing it first)"
+   sleep 1.5
+else
+   chpasswd <<<"root:$pass1" 
 fi
-
-echo "New root password: " $pass1
 
 sleep 0.7
 
@@ -231,7 +252,8 @@ echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;32m\]@\[
 
 if [ -d "$DIR" ];
 then
-   echo "SSH not installed skipping"
+   clear
+   echo "SSH not installed"
    echo "Install SSH?"
    read -p "Y/N: " sshinstall
    if [[ $sshinstall = "Y" ]]
@@ -248,8 +270,7 @@ else
    systemctl restart sshd.service
 fi
 
-chpasswd <<<"root:$pass1"
-
+clear
 echo "Deploy finished"
 
 
@@ -271,10 +292,17 @@ echo "Enter additional componens installation?"
 read -p "Y/N: " addinstall
 if [[ $addinstall = "Y" ]]
 then
+   clear
    componentInstall
 else
    echo "Skipping additional components installation"
 fi
-
-
+sleep 0.5
+clear
+echo "Reboot? (Note: Rebooting required to change the hostname)"
+read -p "Y/N: " reboot
+if [[ $reboot = "Y" ]]
+then
+   reboot
+fi
 echo "Bye."
