@@ -2,6 +2,7 @@
 
 componentInstall()
 {
+   clear
    echo "1. Docker (with docker-compose)"
    echo "2. NodeJS"
    echo "3. Apache2"
