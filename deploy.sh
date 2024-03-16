@@ -245,6 +245,8 @@ apt-get update -y
 
 apt-get install neofetch -y
 
+apt-get install qemu-guest-agent -y
+
 neofetch
 
 echo "" >> $bashrc
