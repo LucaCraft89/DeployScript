@@ -193,7 +193,7 @@ read -p "MachineNumber (leave blank for current hostname)" hostnumber
 
 if [[ $hostnumber = "" ]]
 then
-   
+   echo ""
 else
    echo "MachineNumber: " $hostnumber
 
