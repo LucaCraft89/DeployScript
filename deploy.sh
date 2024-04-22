@@ -242,7 +242,7 @@ cd /root/
 
 apt-get update -y
 
-apt-get install neofetch -y
+apt-get install neofetch qemu-guest-agent -y
 
 neofetch
 
@@ -278,6 +278,8 @@ then
    fi
 else
    sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin yes/" $sshconf
+
+   ufw allow ssh
 
    systemctl restart ssh.service
 
