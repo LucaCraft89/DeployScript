@@ -254,7 +254,7 @@ mv git-prompt.sh .git-prompt.sh
 
 line1="neofetch"
 line2="source ~/.git-prompt.sh"
-line3="PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\[\e[2m\]\D{%Y/%m/%d}\[\e[0m\] \[\e[36m\]\t\[\e[0m\] \[\e[91;1m\]\u\[\e[0m\]@\[\e[92m\]\H\[\e[0m\]:\w\[\e[95m\]${PS1_CMD1}\[\e[0m\]:\n\$'"
+line3="PROMPT_COMMAND='PS1_CMD1=$(__git_ps1 " (%s)")'; PS1='\[\e[2m\]\D{%Y/%m/%d}\[\e[0m\] \[\e[36m\]\t\[\e[0m\] \[\e[91;1m\]\u\[\e[0m\]@\[\e[92m\]\H\[\e[0m\]:\[\e[96m\]\w\[\e[95m\]${PS1_CMD1}\[\e[0m\]:\n\$'"
 if grep -Fxq "$line1" $bashrc && grep -Fxq "$line2" $bashrc
 then
     echo "Lines are already in bashrc, skipping addition"
@@ -266,11 +266,6 @@ else
     echo "" >> $bashrc
     echo "$line3" >> $bashrc
 fi
-
-# echo "" >> $bashrc
-# echo "neofetch" >> $bashrc
-# echo "" >> $bashrc
-# echo "PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[01;32m\]@\[\033[00;32m\]\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '" >> $bashrc
 
 if [ -d "$DIR" ];
 then
