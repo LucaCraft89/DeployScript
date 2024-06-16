@@ -26,11 +26,11 @@ sudo su
 ```
 2. Then Download and Run The Script
 ```
-cd /root && rm deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh && chmod 777 deploy.sh && ./deploy.sh
+cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh && chmod 777 deploy.sh && ./deploy.sh
 ```
 Silent Version:
 ```
-cd /root && rm deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_silent.sh && chmod 777 deploy_silent.sh && ./deploy_silent.sh
+cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_silent.sh && chmod 777 deploy_silent.sh && ./deploy_silent.sh
 ```
 ## Works on
 Tested:
