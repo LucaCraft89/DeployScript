@@ -28,7 +28,10 @@ sudo su
 ```
 cd /root && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh && chmod 777 deploy.sh && ./deploy.sh
 ```
-
+Silent Version:
+```
+cd /root && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_silent.sh && chmod 777 deploy.sh && ./deploy_silent.sh
+```
 ## Works on
 Tested:
 - x86_64, amd64 Ubuntu 20.04 LTS / Ubuntu Server 20.04
