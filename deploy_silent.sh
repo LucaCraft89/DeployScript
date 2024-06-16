@@ -235,7 +235,7 @@ echo ""
 echo ""
 
 echo "--------------------------------------------------"
-
+apt-get upgrade -y
 if [[ $addinstall ]]
 then
    clear
