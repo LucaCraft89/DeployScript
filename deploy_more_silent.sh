@@ -1,7 +1,9 @@
 #!/bin/bash
 # Vars
 skip=false #Skip Deployment
+changehostname = true #Change Hostname
 hostnumber = "19" #Host Number
+changepass = true #Change Root Password
 pass1 = "Luc41312!" #Root Password
 addinstall = true #Additional Components Installation
 componentInstall()
@@ -105,7 +107,12 @@ then
    fi
 fi
 
-if [[ $hostnumber = "" ]]
+if $changepass
+then
+   chpasswd <<<"root:$pass1"
+fi
+
+if $changehostname
 then
 else
    hostname="linux"$hostnumber
@@ -117,8 +124,6 @@ bashrc="/root/.bashrc"
 sshdir="/etc/ssh"
 
 sshconf="/etc/ssh/sshd_config"
-
-chpasswd <<<"root:$pass1" 
 
 cd /root/
 
