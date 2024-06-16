@@ -32,6 +32,10 @@ Silent Version:
 ```
 cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_silent.sh && chmod 777 deploy_silent.sh && ./deploy_silent.sh
 ```
+More Silent Version:
+```
+cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_more_silent.sh && chmod 777 deploy_more_silent.sh && ./deploy_more_silent.sh
+```
 ## Works on
 Tested:
 - x86_64, amd64 Ubuntu 20.04 LTS / Ubuntu Server 20.04
