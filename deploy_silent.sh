@@ -170,14 +170,7 @@ sshconf="/etc/ssh/sshd_config"
 
 clear
 
-
-if [[ $pass1 = "" ]]
-then
-   echo "Leaving password unchanged (You may not be able to access SSH without changing it first)"
-   sleep 1.5
-else
-   chpasswd <<<"root:$pass1" 
-fi
+chpasswd <<<"root:$pass1" 
 
 sleep 0.7
 
