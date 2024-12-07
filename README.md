@@ -1,51 +1,46 @@
 # DeployScript
-My own Deploy srcipt for quicly detting up a Ubuntu Server installation
+My own Deploy srcipt for quicly setting up a Debian-based Linux Server VM installation on a Proxmox host 
 
-
-
-
-# OLD Version
-## -------------------------------------------------
-## What this does
-1. Aks to change hostname
-2. Enables ssh as root (asks to install ssh if not present)
-3. Installs NeoFetch
-4. add NeoFetch to .bashrc
-5. Changes the root password
-6. Makes the root terminal prittier by adding NeoFetch every time the shell is loaded and changoing the colors (.baschrc)
-7. Asks if you want to install extra components
-    1. Docker (with docker-compose)
-    2. NodeJS
-    3. Apache2
-    5. PHP
-    4. MariaDB (MySQL)
-    5. MongoDB
-    6. Python
-    7. Java
-    8. C/C++ (GCC/G++/Clang)
+## What does this do?
+1. Prompts to change the following
+    - hostname
+    - root password
+    - terminal prettieness
+    - install ssh if absent
+    - reboot
+2. Allows root ssh login
+3. Sets sftp server to internal-sftp
+5. Installs:
+    - neofetch
+    - qemu-guest-agent
+    - spice-vdagent if display is present
+    - curl, wget and git
 
 ## Usage
-1. Acquire ROOT Shell
-```
+1. Acquire root shell (avoid using sudo)
+```shell
+#For suduores (user password)
 sudo su 
 ```
-2. Then Download and Run The Script
+```shell
+#For non sudoeers (root password)
+su -
 ```
-cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh && chmod 777 deploy.sh && ./deploy.sh
+2. Pull, adjust permissions, execute
+```shell
+# With curl (recomended)
+cd /root && rm -f deploy*.sh && curl https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh -o deploy.sh && chmod +x deploy.sh && ./deploy.sh
 ```
-Silent Version:
+```shell
+# With wget
+cd /root && rm -f deploy*.sh && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy.sh && chmod +x deploy.sh && ./deploy.sh
 ```
-cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_silent.sh && chmod 777 deploy_silent.sh && ./deploy_silent.sh
-```
-More Silent Version:
-```
-cd /root && rm -f deploy* && wget https://raw.githubusercontent.com/LucaCraft89/DeployScript/main/deploy_more_silent.sh && chmod 777 deploy_more_silent.sh && ./deploy_more_silent.sh
-```
+
 ## Works on
 Tested:
-- x86_64, amd64 Ubuntu 20.04 LTS / Ubuntu Server 20.04
-- x86_64, amd64 Debian Server 9
-- Raspberry Pi OS and Raspberry Pi OS Lite on Raspberry Pi 4 and Raspberry Pi 3
+- amd64 Ubuntu 20.04, 22.04, 24.04
+- amd64 Debian 9, 12
+- Raspberry Pi OS and Raspberry Pi OS Lite on Raspberry Pi 3, 4, 5
 
 Untested:
 - Anything that is Debian or Debian-based
