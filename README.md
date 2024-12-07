@@ -1,6 +1,11 @@
 # DeployScript
 My own Deploy srcipt for quicly detting up a Ubuntu Server installation
 
+
+
+
+# OLD Version
+## -------------------------------------------------
 ## What this does
 1. Aks to change hostname
 2. Enables ssh as root (asks to install ssh if not present)
